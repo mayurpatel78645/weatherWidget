@@ -10,7 +10,12 @@ const getLocation = async() => {
   }
 }
 
-
+const getCurrentWeatherData = async(latitude, longitude) => {
+  const url = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
+}
 
 const userLocation = async(position) => {
   const latitude = `${position.coords.latitude}`;
