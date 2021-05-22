@@ -16,7 +16,7 @@ class Forecast {
   static success = (position) => {
     const latitude  = position.coords.latitude;
     const longitude = position.coords.longitude;
-    const url = `http://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`
+    const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`
     this.getForecastData(url);
   }
 
@@ -44,7 +44,7 @@ class CurrentWeather {
   static success = (position) => {
     const latitude  = position.coords.latitude;
     const longitude = position.coords.longitude;
-    const url = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
     this.currentWeatherData(url);
   }
 
@@ -64,7 +64,7 @@ class CurrentWeather {
     currentConditions.insertAdjacentHTML('beforeend',
     `
     <h2>Current Conditions</h2>
-        <img src="http://openweathermap.org/img/wn/${icon}@2x.png" />
+        <img src="https://openweathermap.org/img/wn/${icon}@2x.png" />
         <div class="current">
           <div class="temp">${temp}℃</div>
           <div class="condition">${condition}</div>
