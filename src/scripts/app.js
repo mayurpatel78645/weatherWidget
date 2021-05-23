@@ -16,6 +16,7 @@ class Forecast {
   static success = (position) => {
     const latitude  = position.coords.latitude;
     const longitude = position.coords.longitude;
+    console.log(latitude, longitude)
     const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`
     this.getForecastData(url);
   }
@@ -24,7 +25,14 @@ class Forecast {
     const response = await fetch(url);
     const data = await response.json();
     console.log(data);
-    return data;
+    this.render(data);
+  }
+
+  static render = (data) => {
+    data.list.forEach(element => {
+      const date = new Date(element.dt_txt).toLocaleDateString('default', {weekday: 'long'});
+      console.log(date);
+    })
   }
 }
 
@@ -56,7 +64,7 @@ class CurrentWeather {
 
   static render = (data) => {
     const currentConditions = document.querySelector('.current-conditions');
-    const temp = data.main.temp;
+    const temp = Math.ceil(data.main.temp);
     const condition = data.weather[0].description;
     const icon = data.weather[0].icon;
     console.log(data);
