@@ -47,7 +47,7 @@ h2, h3 {
 
 .day {
   text-align: center;
-  min-width: 120px;
+  min-width: 200px;
   width: 20%;  
   padding: 10px 0;
   border-right: 1px solid lightgrey;
@@ -62,7 +62,8 @@ h2, h3 {
 .forecast {
   display: flex;  
   flex-direction: row;
-  flex-wrap: wrap;  
+  justify-content: center;
+  /*flex-wrap: wrap;  */
 }
 
 .date {
