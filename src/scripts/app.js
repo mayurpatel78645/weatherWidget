@@ -16,7 +16,6 @@ class Forecast {
   static success = (position) => {
     const latitude  = position.coords.latitude;
     const longitude = position.coords.longitude;
-    console.log(latitude, longitude)
     const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`
     this.getForecastData(url);
   }
