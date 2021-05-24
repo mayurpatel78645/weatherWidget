@@ -47,7 +47,7 @@ h2, h3 {
 
 .day {
   text-align: center;
-  min-width: 200px;
+  min-width: 120px;
   width: 20%;  
   padding: 10px 0;
   border-right: 1px solid lightgrey;
