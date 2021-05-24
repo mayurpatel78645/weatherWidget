@@ -29,117 +29,23 @@ class Forecast {
 
   static render = (data) => {
     const forecast = document.querySelector('.forecast');
-    const sunday = document.querySelector('.Sunday');
-    const monday = document.querySelector('.Monday');
-    const tuesday = document.querySelector('.Tuesday');
-    const wednesday = document.querySelector('.Wednesday');
-    const thursday = document.querySelector('.Thursday');
-    const friday = document.querySelector('.Friday');
-    const saturday = document.querySelector('.Saturday');
-    sunday.innerHTML = '';
-    monday.innerHTML = '';
-    tuesday.innerHTML = '';
-    wednesday.innerHTML = '';
-    thursday.innerHTML = '';
-    friday.innerHTML = '';
-    saturday.innerHTML = '';
+    forecast.innerHTML = '';
     data.list.forEach(element => {
       const date = new Date(element.dt_txt).toLocaleDateString('default', {weekday: 'long'});
       const time = new Date(element.dt_txt).toLocaleTimeString('default', {hour12:true, hour:'2-digit', minute: '2-digit'});
-      switch(date) {
-        case 'Sunday':
-          sunday.insertAdjacentHTML('beforeend', 
-          `
-            <h2>${date}</h2><br>
-            <h3>${time}</h3>
-            <img src="https://openweathermap.org/img/wn/${element.weather[0].icon}@2x.png" />
-            <div class="description">${element.weather[0].description}</div>
-            <div class="temp">
-              <span class="high">${Math.ceil(element.main.temp_max)}℃</span>/<span class="low">${Math.floor(element.main.temp_min)}℃</span>
-            </div><br>
-          `);
-          break;
-        case 'Monday':
-          //code block
-          monday.insertAdjacentHTML('beforeend', 
-          `
-            <h2>${date}</h2><br>
-            <h3>${time}</h3>
-            <img src="https://openweathermap.org/img/wn/${element.weather[0].icon}@2x.png" />
-            <div class="description">${element.weather[0].description}</div>
-            <div class="temp">
-              <span class="high">${Math.ceil(element.main.temp_max)}℃</span>/<span class="low">${Math.floor(element.main.temp_min)}℃</span>
-            </div><br>
-          `);
-          break;
-        case 'Tuesday':
-          //code block
-          tuesday.insertAdjacentHTML('beforeend', 
-          `
-            <h2>${date}</h2><br>
-            <h3>${time}</h3>
-            <img src="https://openweathermap.org/img/wn/${element.weather[0].icon}@2x.png" />
-            <div class="description">${element.weather[0].description}</div>
-            <div class="temp">
-              <span class="high">${Math.ceil(element.main.temp_max)}℃</span>/<span class="low">${Math.floor(element.main.temp_min)}℃</span>
-            </div><br>
-          `);
-          break;
-        case 'Wednesday':
-          //code block
-          wednesday.insertAdjacentHTML('beforeend', 
-          `
-            <h2>${date}</h2><br>
-            <h3>${time}</h3>
-            <img src="https://openweathermap.org/img/wn/${element.weather[0].icon}@2x.png" />
-            <div class="description">${element.weather[0].description}</div>
-            <div class="temp">
-              <span class="high">${Math.ceil(element.main.temp_max)}℃</span>/<span class="low">${Math.floor(element.main.temp_min)}℃</span>
-            </div><br>
-          `);
-          break;
-        case 'Thursday':
-          //code block
-          thursday.insertAdjacentHTML('beforeend', 
-          `
-            <h2>${date}</h2><br>
-            <h3>${time}</h3>
-            <img src="https://openweathermap.org/img/wn/${element.weather[0].icon}@2x.png" />
-            <div class="description">${element.weather[0].description}</div>
-            <div class="temp">
-              <span class="high">${Math.ceil(element.main.temp_max)}℃</span>/<span class="low">${Math.floor(element.main.temp_min)}℃</span>
-            </div><br>
-          `);
-          break;
-        case 'Friday':
-          //code block
-          friday.insertAdjacentHTML('beforeend', 
-          `
-            <h2>${date}</h2><br>
-            <h3>${time}</h3>
-            <img src="https://openweathermap.org/img/wn/${element.weather[0].icon}@2x.png" />
-            <div class="description">${element.weather[0].description}</div>
-            <div class="temp">
-              <span class="high">${Math.ceil(element.main.temp_max)}℃</span>/<span class="low">${Math.floor(element.main.temp_min)}℃</span>
-            </div><br>
-          `);
-          break;
-        case 'Saturday':
-          //code block
-          saturday.insertAdjacentHTML('beforeend', 
-          `
-            <h2>${date}</h2><br>
-            <h3>${time}</h3>
-            <img src="https://openweathermap.org/img/wn/${element.weather[0].icon}@2x.png" />
-            <div class="description">${element.weather[0].description}</div>
-            <div class="temp">
-              <span class="high">${Math.ceil(element.main.temp_max)}℃</span>/<span class="low">${Math.floor(element.main.temp_min)}℃</span>
-            </div><br>
-          `);
-          break;
-        default:
-          console.error('Something is wrong');
-      }
+      if (time !== '03:00 PM') return ;
+      forecast.insertAdjacentHTML('beforeend', 
+        `
+        <div class="day Sunday">
+      
+          <h3>${date}</h3><br>
+          <img src="https://openweathermap.org/img/wn/${element.weather[0].icon}@2x.png" />
+          <div class="description">${element.weather[0].description}</div>
+          <div class="temp">
+            <span class="high">${Math.ceil(element.main.temp_max)}℃</span>/<span class="low">${Math.floor(element.main.temp_min)}℃</span>
+          </div>
+        </div>
+        `);
     })
   }
 }
